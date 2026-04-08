@@ -1,0 +1,21 @@
+model_list:
+  - model_name: anthropic-claude-4.6-sonnet
+    litellm_params:
+      model: anthropic-claude-4.6-sonnet
+      api_base: "https://inference.do-ai.run/v1"
+      api_key: "os.environ/DO_INFERENCE_KEY"
+      custom_llm_provider: hosted_vllm
+  
+  - model_name: anthropic-claude-4.6-opus
+    litellm_params:
+      model: anthropic-claude-4.6-opus
+      api_base: "https://inference.do-ai.run/v1"
+      api_key: "os.environ/DO_INFERENCE_KEY"
+      custom_llm_provider: hosted_vllm
+
+  - model_name: anthropic-claude-4.5-haiku
+    litellm_params:
+      model: anthropic-claude-4.5-haiku
+      api_base: "https://inference.do-ai.run/v1"
+      api_key: "os.environ/DO_INFERENCE_KEY"
+      custom_llm_provider: hosted_vllm
