@@ -1,88 +1,8 @@
 spec:
-  alerts:
-  - rule: DEPLOYMENT_FAILED
-  - rule: DOMAIN_FAILED
-  databases:
-  - name: litellm-db
-  features:
-  - buildpack-stack=ubuntu-22
-  ingress:
-    rules:
-    - component:
-        name: litellm
-      match:
-        path:
-          prefix: /
   name: litellm-app
   region: lon
   services:
   - name: litellm
-    # IMPORTANT: The --load_all_models flag is required to sync YAML models to the DB
-    run_command: litellm --port 4000 --load_all_models
-    envs:
-    - key: LITELLM_PROXY_CONFIG
-      scope: RUN_TIME
-      value: |
-        model_list:
-          - model_name: anthropic-claude-4.6-sonnet
-            litellm_params:
-              model: anthropic-claude-4.6-sonnet
-              api_base: "https://inference.do-ai.run/v1"
-              api_key: "os.environ/DO_INFERENCE_KEY"
-              custom_llm_provider: hosted_vllm
-          - model_name: anthropic-claude-4.6-opus
-            litellm_params:
-              model: anthropic-claude-4.6-opus
-              api_base: "https://inference.do-ai.run/v1"
-              api_key: "os.environ/DO_INFERENCE_KEY"
-              custom_llm_provider: hosted_vllm
-          - model_name: anthropic-claude-4.5-haiku
-            litellm_params:
-              model: anthropic-claude-4.5-haiku
-              api_base: "https://inference.do-ai.run/v1"
-              api_key: "os.environ/DO_INFERENCE_KEY"
-              custom_llm_provider: hosted_vllm
-        general_settings:
-          store_model_in_db: true
-    - key: DO_INFERENCE_KEY
-      scope: RUN_TIME
-      type: SECRET
-      value: # YOUR_DIGITALOCEAN_INFERENCE_KEY
-    - key: DATABASE_URL
-      scope: RUN_TIME
-      value: ${litellm-db.DATABASE_URL}
-    - key: LITELLM_LOG
-      scope: RUN_TIME
-      value: ERROR
-    - key: LITELLM_MODE
-      scope: RUN_TIME
-      value: PRODUCTION
-    - key: LITELLM_MASTER_KEY
-      scope: RUN_TIME
-      type: SECRET
-      value: 
-    - key: UI_USERNAME
-      scope: RUN_TIME
-      value: 
-    - key: UI_PASSWORD
-      scope: RUN_TIME
-      type: SECRET
-      value: 
-    - key: STORE_PROMPTS_IN_SPEND_LOGS
-      scope: RUN_TIME
-      value: "False"
-    - key: LITELLM_DROP_PARAMS
-      scope: RUN_TIME
-      value: "True"
-    - key: REQUEST_TIMEOUT
-      scope: RUN_TIME
-      value: "600"
-    - key: JSON_LOGS
-      scope: RUN_TIME
-      value: "True"
-    - key: PROXY_BATCH_WRITE_AT
-      scope: RUN_TIME
-      value: "60"
     image:
       registry: berriai
       registry_type: GHCR
@@ -91,4 +11,66 @@ spec:
     http_port: 4000
     instance_count: 1
     instance_size_slug: apps-s-1vcpu-2gb
-    source_dir: /
+    
+    # 1. This creates the file at the specific path LiteLLM is looking for
+    configs:
+      - key: proxy_server_config.yaml
+        path: /app/proxy_server_config.yaml
+        content: |
+          model_list:
+            - model_name: anthropic-claude-4.6-sonnet
+              litellm_params:
+                model: anthropic-claude-4.6-sonnet
+                api_base: "https://inference.do-ai.run/v1"
+                api_key: "os.environ/DO_INFERENCE_KEY"
+                custom_llm_provider: hosted_vllm
+            - model_name: anthropic-claude-4.6-opus
+              litellm_params:
+                model: anthropic-claude-4.6-opus
+                api_base: "https://inference.do-ai.run/v1"
+                api_key: "os.environ/DO_INFERENCE_KEY"
+                custom_llm_provider: hosted_vllm
+            - model_name: anthropic-claude-4.5-haiku
+              litellm_params:
+                model: anthropic-claude-4.5-haiku
+                api_base: "https://inference.do-ai.run/v1"
+                api_key: "os.environ/DO_INFERENCE_KEY"
+                custom_llm_provider: hosted_vllm
+          general_settings:
+            store_model_in_db: true
+
+    # 2. This matches your Terraform 'args'
+    run_command: litellm --config /app/proxy_server_config.yaml --port 4000 --detailed_debug
+
+    envs:
+    - key: DO_INFERENCE_KEY
+      scope: RUN_TIME
+      type: SECRET
+      value: # Insert your key
+    - key: DATABASE_URL
+      scope: RUN_TIME
+      value: ${litellm-db.DATABASE_URL}
+    - key: LITELLM_MASTER_KEY
+      scope: RUN_TIME
+      type: SECRET
+      value: 
+    - key: UI_USERNAME
+      scope: RUN_TIME
+      value: admin
+    - key: UI_PASSWORD
+      scope: RUN_TIME
+      type: SECRET
+      value: admin
+
+  databases:
+  - name: litellm-db
+  alerts:
+  - rule: DEPLOYMENT_FAILED
+  - rule: DOMAIN_FAILED
+  ingress:
+    rules:
+    - component:
+        name: litellm
+      match:
+        path:
+          prefix: /
