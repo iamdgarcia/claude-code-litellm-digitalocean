@@ -15,10 +15,11 @@ spec:
           prefix: /
   name: litellm-app
   region: lon
-  services:
+services:
   - name: litellm
+    run_command: litellm --port 4000 --load_all_models
     envs:
-    - key: LITELLM_CONFIG
+    - key: LITELLM_PROXY_CONFIG
       scope: RUN_TIME
       value: |
         model_list:
@@ -40,10 +41,15 @@ spec:
               api_base: "https://inference.do-ai.run/v1"
               api_key: "os.environ/DO_INFERENCE_KEY"
               custom_llm_provider: hosted_vllm
+        general_settings:
+          store_model_in_db: true
     - key: DO_INFERENCE_KEY
       scope: RUN_TIME
       type: SECRET
-      value: # Your DigitalOcean API Key
+      value: # Your DigitalOcean Key
+    - key: DATABASE_URL
+      scope: RUN_TIME
+      value: ${litellm-db.DATABASE_URL}
     - key: LITELLM_LOG
       scope: RUN_TIME
       value: ERROR
@@ -61,12 +67,6 @@ spec:
       scope: RUN_TIME
       type: SECRET
       value: 
-    - key: DATABASE_URL
-      scope: RUN_TIME
-      value: ${litellm-db.DATABASE_URL}
-    - key: STORE_MODEL_IN_DB
-      scope: RUN_TIME
-      value: "True"
     - key: STORE_PROMPTS_IN_SPEND_LOGS
       scope: RUN_TIME
       value: "False"
@@ -89,5 +89,5 @@ spec:
       tag: main-stable
     http_port: 4000
     instance_count: 1
-    instance_size_slug: apps-s-1vcpu-2gb
+    instance_size_slug: apps-s-1vcpu-1gb
     source_dir: /
