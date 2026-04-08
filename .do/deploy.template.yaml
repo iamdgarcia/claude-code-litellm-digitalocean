@@ -15,8 +15,9 @@ spec:
           prefix: /
   name: litellm-app
   region: lon
-services:
+  services:
   - name: litellm
+    # IMPORTANT: The --load_all_models flag is required to sync YAML models to the DB
     run_command: litellm --port 4000 --load_all_models
     envs:
     - key: LITELLM_PROXY_CONFIG
@@ -46,7 +47,7 @@ services:
     - key: DO_INFERENCE_KEY
       scope: RUN_TIME
       type: SECRET
-      value: # Your DigitalOcean Key
+      value: # YOUR_DIGITALOCEAN_INFERENCE_KEY
     - key: DATABASE_URL
       scope: RUN_TIME
       value: ${litellm-db.DATABASE_URL}
@@ -89,5 +90,5 @@ services:
       tag: main-stable
     http_port: 4000
     instance_count: 1
-    instance_size_slug: apps-s-1vcpu-1gb
+    instance_size_slug: apps-s-1vcpu-2gb
     source_dir: /
