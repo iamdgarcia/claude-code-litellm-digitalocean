@@ -122,3 +122,8 @@ claude
 2. Send Claude Code a message. It will respond exactly as it normally does.
 3. **The Magic:** Go back to your LiteLLM web UI. You will now see your request, response, and token usage logged in real-time, all being paid for by your DigitalOcean credit!
 <img width="1920" height="823" alt="image" src="https://github.com/user-attachments/assets/1ece3af4-eaea-4844-a105-e254af65f97e" />
+<div align="center">
+
+[![Get 200$ in credit for FREE](https://img.shields.io/badge/Get_200$-in_credit_for_FREE-blue?style=for-the-badge&logo=digitalocean)](https://www.digitalocean.com/?refcode=eddc62174250&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+
+</div>
