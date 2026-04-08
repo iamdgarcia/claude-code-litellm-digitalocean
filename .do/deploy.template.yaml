@@ -17,38 +17,13 @@ spec:
   region: lon
   services:
   - name: litellm
-    configs:
-    - key: config.yaml
-      path: /app/config.yaml
-      content: |
-        model_list:
-          - model_name: anthropic-claude-4.6-sonnet
-            litellm_params:
-              model: anthropic-claude-4.6-sonnet
-              api_base: "https://inference.do-ai.run/v1"
-              api_key: "os.environ/DO_INFERENCE_KEY"
-              custom_llm_provider: hosted_vllm
-          
-          - model_name: anthropic-claude-4.6-opus
-            litellm_params:
-              model: anthropic-claude-4.6-opus
-              api_base: "https://inference.do-ai.run/v1"
-              api_key: "os.environ/DO_INFERENCE_KEY"
-              custom_llm_provider: hosted_vllm
-
-          - model_name: anthropic-claude-4.5-haiku
-            litellm_params:
-              model: anthropic-claude-4.5-haiku
-              api_base: "https://inference.do-ai.run/v1"
-              api_key: "os.environ/DO_INFERENCE_KEY"
-              custom_llm_provider: hosted_vllm
-
-    run_command: litellm --config /app/config.yaml --port 4000
+    # Tell LiteLLM to use the file in your repo
+    run_command: litellm --config config.yaml --port 4000
     envs:
     - key: DO_INFERENCE_KEY
       scope: RUN_TIME
       type: SECRET
-      value: # Add your DigitalOcean Model Access Key here
+      value: # Your DigitalOcean API Key
     - key: LITELLM_LOG
       scope: RUN_TIME
       value: ERROR
