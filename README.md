@@ -1,10 +1,7 @@
 <div align="center">
-  <a href="https://www.digitalocean.com/?refcode=eddc62174250&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
-    <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%203.svg" alt="Get $200 DigitalOcean Credit" />
-  </a>
-  <a href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/iamdgarcia/claude-code-litellm-digitalocean/tree/main">
-    <img src="https://www.deploytodo.com/do-btn-blue.svg" alt="Deploy to DO" />
-  </a>
+
+[![Get 200$ in credit for FREE](https://img.shields.io/badge/Get_200$-in_credit_for_FREE-blue?style=for-the-badge&logo=digitalocean)](https://www.digitalocean.com/?refcode=eddc62174250&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+
 </div>
 
 # How to Run Claude Code for Free: Setting Up a Gateway with LiteLLM and DigitalOcean
