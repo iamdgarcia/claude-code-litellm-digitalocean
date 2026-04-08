@@ -68,7 +68,7 @@ Now we need to add the DigitalOcean Serverless Inference API Endpoint to your Li
 1. Inside the LiteLLM UI, click **Add Model**.
 2. Configure it with the following parameters:
 
-* **Provider:** `OpenAI-Compatible Endpoints`
+* **Provider:** `Custom OpenAi`
 * **LiteLLM Model Name:** `anthropic-claude-4.6-sonnet` *(This is the model name passed to the DO Serverless Inference API)*
 * **Model Name:** `digitalocean-anthropic-claude-4.6-sonnet` *(This is your custom name. Claude Code will use this via the `ANTHROPIC_MODEL` env variable)*
 * **API Base:** `https://inference.do-ai.run/v1`
