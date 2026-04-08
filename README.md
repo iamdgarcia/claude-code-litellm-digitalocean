@@ -69,12 +69,12 @@ Now we need to add the DigitalOcean Serverless Inference API Endpoint to your Li
 2. Configure it with the following parameters:
 
 * **Provider:** `OpenAI-Compatible Endpoints`
-* **LiteLLM Model Name:** `anthropic-claude-4.5-sonnet` *(This is the model name passed to the DO Serverless Inference API)*
-* **Model Name:** `digitalocean-anthropic-claude-4.5-sonnet` *(This is your custom name. Claude Code will use this via the `ANTHROPIC_MODEL` env variable)*
+* **LiteLLM Model Name:** `anthropic-claude-4.6-sonnet` *(This is the model name passed to the DO Serverless Inference API)*
+* **Model Name:** `digitalocean-anthropic-claude-4.6-sonnet` *(This is your custom name. Claude Code will use this via the `ANTHROPIC_MODEL` env variable)*
 * **API Base:** `https://inference.do-ai.run/v1`
 * **API Key:** Generate your key here: [DO GenAI Model Access Keys](https://cloud.digitalocean.com/gen-ai/model-access-keys).
 
-<img width="1666" height="1556" alt="image" src="https://github.com/user-attachments/assets/4115cebc-38e0-4474-a1bd-6e4358b5a898" />
+<img width="1606" height="778" alt="image" src="https://github.com/user-attachments/assets/7785c46d-daaa-4640-8654-3ad14672c78a" />
 
 ---
 
@@ -89,8 +89,8 @@ For security, it's highly recommended to generate a specific Virtual Key for Cla
 Now, configure your local environment to point Claude Code to your new gateway. Run these exports in your terminal (or add them to your `~/.zshrc` / `~/.bashrc`):
 
 ```bash
-export ANTHROPIC_BASE_URL=[https://your-app-name.ondigitalocean.app](https://your-app-name.ondigitalocean.app)
-export ANTHROPIC_MODEL=digitalocean-anthropic-claude-4.5-sonnet
+export ANTHROPIC_BASE_URL=https://your-app-name.ondigitalocean.app
+export ANTHROPIC_MODEL=digitalocean-anthropic-claude-4.6-sonnet
 export ANTHROPIC_AUTH_TOKEN=your-virtual-key-here
 export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1
 ```
@@ -100,8 +100,8 @@ Alternatively, you can save this persistently in your Claude Code settings at `~
 ```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "[https://your-app-name.ondigitalocean.app](https://your-app-name.ondigitalocean.app)",
-    "ANTHROPIC_MODEL": "digitalocean-anthropic-claude-4.5-sonnet",
+    "ANTHROPIC_BASE_URL": "https://your-app-name.ondigitalocean.app",
+    "ANTHROPIC_MODEL": "digitalocean-anthropic-claude-4.6-sonnet",
     "ANTHROPIC_AUTH_TOKEN": "your-virtual-key-here",
     "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": "1"
   }
@@ -118,10 +118,12 @@ Start Claude Code in your terminal:
 claude
 ```
 
-1. You should see your custom model name (`digitalocean-anthropic-claude-4.5-sonnet`) noted at the top of the interface.
+1. You should see your custom model name (`digitalocean-anthropic-claude-4.6-sonnet`) noted at the top of the interface.
 2. Send Claude Code a message. It will respond exactly as it normally does.
 3. **The Magic:** Go back to your LiteLLM web UI. You will now see your request, response, and token usage logged in real-time, all being paid for by your DigitalOcean credit!
-<img width="1920" height="823" alt="image" src="https://github.com/user-attachments/assets/1ece3af4-eaea-4844-a105-e254af65f97e" />
+<img width="1664" height="803" alt="image" src="https://github.com/user-attachments/assets/f2e081d1-dca3-45f3-b3e8-b8fbcf257cac" />
+
+
 <div align="center">
 
 [![Get 200$ in credit for FREE](https://img.shields.io/badge/Get_200$-in_credit_for_FREE-blue?style=for-the-badge&logo=digitalocean)](https://www.digitalocean.com/?refcode=eddc62174250&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
