@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Get 200$ in credit for FREE](https://img.shields.io/badge/Get_200$-in_credit_for_FREE-blue?style=for-the-badge&logo=digitalocean)](https://www.digitalocean.com/?refcode=eddc62174250&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+[![Get 200$ in credit for FREE](https://img.shields.io/badge/Get_200$-in_credit_for_FREE-blue?style=for-the-badge&logo=digitalocean)](https://m.do.co/c/eddc62174250)
 
 </div>
 
@@ -126,6 +126,6 @@ claude
 
 <div align="center">
 
-[![Get 200$ in credit for FREE](https://img.shields.io/badge/Get_200$-in_credit_for_FREE-blue?style=for-the-badge&logo=digitalocean)](https://www.digitalocean.com/?refcode=eddc62174250&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+[![Get 200$ in credit for FREE](https://img.shields.io/badge/Get_200$-in_credit_for_FREE-blue?style=for-the-badge&logo=digitalocean)](https://m.do.co/c/eddc62174250)
 
 </div>
